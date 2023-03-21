@@ -36,7 +36,7 @@ app.post('/', async (req, res) => {
       size: imageSize,
     }); */
     const buffer = prompt;/* Buffer.from(prompt, "base64"); */
-    buffer.name = "image.png";
+    buffer.name = "image.jpg";
 
     const response = await openai.createImageVariation(
       /* fs.createReadStream(prompt) */buffer,
