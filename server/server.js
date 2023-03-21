@@ -35,14 +35,17 @@ app.post('/', async (req, res) => {
       n: 1,
       size: imageSize,
     }); */
+    const buffer = Buffer.from(prompt, "base64");
+    buffer.name = "image.png";
+
     const response = await openai.createImageVariation(
-      fs.createReadStream(prompt),
+      /* fs.createReadStream(prompt) */buffer,
       1,
-      "512x512"
+      "512x512",
+      "b64_json"
     );
     
-
-    const imageUrl = response.data.data[0].url;
+    const imageUrl = response.data.data[0].b64_json;
 
     res.status(200).json({
       success: true,
